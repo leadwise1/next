@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand primitives */
+:root {
+  --lead-navy: #2A3E4C;
+  --lead-navy-dark: #1A2B3A;
+  --lead-gold: #FFD700;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-900;
+}
