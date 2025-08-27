@@ -1,17 +1,27 @@
-/** @type {import('tailwindcss').Config} */
+/ ** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}"
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        leadNavy: "#2A3E4C",
-        leadNavyDark: "#1A2B3A",
-        leadGold: "#FFD700"
-      }
+        leadNavy: 'var(--leadNavy)',    // primary background
+        leadAccent: 'var(--leadAccent)',  // accent color
+        leadLight: 'var(--leadLight)',   // light background / text
+      },
+      fontFamily: {
+        oswald: ['Oswald', 'sans-serif'],
+        cinzel: ['Cinzel', 'serif'],
+      },
     },
   },
   plugins: [],
 };
+
+/* 
+  Note: Ensure that the Google Fonts for Oswald and Cinzel are imported in your global CSS or HTML file, for example:
+
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Oswald&display=swap');
+*/

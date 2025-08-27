@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Oswald:wght@400;700&display=swap');
+
 /* Brand primitives */
 :root {
-  --lead-navy: #2A3E4C;
-  --lead-navy-dark: #1A2B3A;
-  --lead-gold: #FFD700;
+  --lead-navy: #fffefa;       /* primary background */
+  --lead-light: #16123c;      /* light text / background */
+  --lead-accent: #ffd7c6;     /* accent color */
 }
 
 html, body, #__next {
@@ -14,5 +17,23 @@ html, body, #__next {
 }
 
 body {
-  @apply bg-white text-gray-900;
+  @apply bg-[var(--lead-navy)] text-[var(--lead-light)] font-sans;
+}
+
+/* Optional utility classes for accent color */
+.text-accent {
+  color: var(--lead-accent);
+}
+
+.bg-accent {
+  background-color: var(--lead-accent);
+}
+
+/* Font classes using imported Google Fonts */
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }

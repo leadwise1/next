@@ -1,22 +1,43 @@
-export default function ImpactStats() {
-  const stats = [
-    { k: '2024', v: 'Milestones' },
-    { k: '50+', v: 'Leaders Coached' },
-    { k: '372', v: 'Community Hours' },
-    { k: '80%', v: 'Program Satisfaction' },
-  ];
+"use client";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const Stat = ({ value, label }) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const end = value;
+    const duration = 1500;
+    const increment = Math.ceil(end / (duration / 16));
+    const interval = setInterval(() => {
+      start += increment;
+      if (start > end) start = end;
+      setCount(start);
+      if (start === end) clearInterval(interval);
+    }, 16);
+  }, [value]);
+
   return (
-    <section className="bg-white py-16 px-6 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-2xl md:text-3xl font-bold text-leadNavy">Your Voice, Our Impact</h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.k} className="rounded-lg border border-gray-200 p-6 text-center">
-              <div className="text-3xl font-extrabold text-leadNavy">{s.k}</div>
-              <div className="text-gray-600 mt-2">{s.v}</div>
-            </div>
-          ))}
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-center"
+    >
+      <div className="text-5xl font-extrabold text-indigo-600">{count}+</div>
+      <div className="mt-1 text-sm font-medium text-gray-700">{label}</div>
+    </motion.div>
+  );
+};
+
+export default function ImpactStats() {
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <Stat value={2024} label="Cohort Year" />
+        <Stat value={50} label="Mentors" />
+        <Stat value={372} label="Leaders Empowered" />
+        <Stat value={80} label="Job Placement %" />
       </div>
     </section>
   );
